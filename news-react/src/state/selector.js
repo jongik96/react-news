@@ -2,8 +2,6 @@ import { selector } from "recoil";
 import { fetchAsk, fetchItem, fetchJobs, fetchNews, fetchUser } from "../api";
 import { askIDState, pathNameState, userIDState } from "./atoms";
 
-// });
-
 export const getItemList = selector({
   key: "getItemList",
   get: async ({ get }) => {
