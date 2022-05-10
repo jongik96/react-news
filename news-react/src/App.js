@@ -6,21 +6,25 @@ import JobsView from "./pages/JobsView";
 import ToolBar from "./components/ToolBar";
 import UserInfo from "./pages/UserInfo";
 import AskInfo from "./pages/AskInfo";
-
-function App(props) {
+import { RecoilRoot } from "recoil";
+function App() {
   return (
     <>
-      <Router>
-        <ToolBar />
-        <Routes>
-          <Route exact path="/" element={<NewsView />} />
-          <Route path="/news" element={<NewsView />} />
-          <Route path="/ask" element={<AskView />} />
-          <Route path="/jobs" element={<JobsView />} />
-          <Route path="/userInfo/:id" element={<UserInfo />} />
-          <Route path="/askInfo/:id" element={<AskInfo />} />
-        </Routes>
-      </Router>
+      <RecoilRoot>
+        <React.Suspense fallback={<div>Loading...</div>}>
+          <Router>
+            <ToolBar />
+            <Routes>
+              <Route exact path="/" element={<NewsView />} />
+              <Route path="/news" element={<NewsView />} />
+              <Route path="/ask" element={<AskView />} />
+              <Route path="/jobs" element={<JobsView />} />
+              <Route path="/userInfo/:id" element={<UserInfo />} />
+              <Route path="/askInfo/:id" element={<AskInfo />} />
+            </Routes>
+          </Router>
+        </React.Suspense>
+      </RecoilRoot>
     </>
   );
 }
