@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchUser } from "../../api/index";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { userIDState } from "../../state/atoms";
+import { getUserInfo } from "../../state/selector";
 
 function UserItem() {
   const params = useParams().id;
-  const [userInfo, setUserInfo] = useState();
-
-  const fetchUserInfo = async () => {
-    const response = await fetchUser(params);
-    setUserInfo(response.data);
-  };
-
+  const [userId, setUserId] = useRecoilState(userIDState);
+  const userInfo = useRecoilValue(getUserInfo);
   useEffect(() => {
-    fetchUserInfo();
-  }, []);
+    setUserId(params);
+  });
   return (
     <>
       <div style={{ display: "flex", alignItems: "center" }}>

@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchItem } from "../api";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { askIDState } from "../state/atoms";
+import { getAskInfo } from "../state/selector";
 
 function AskInfo() {
   const params = useParams().id;
-  const [askInfo, setAskInfo] = useState();
-  const fetchAskInfo = async () => {
-    const response = await fetchItem(params);
-    setAskInfo(response.data);
-  };
+  const [askId, setAskId] = useRecoilState(askIDState);
+  const askInfo = useRecoilValue(getAskInfo);
   useEffect(() => {
-    fetchAskInfo();
-  }, []);
+    setAskId(params);
+  });
   return (
     <>
       {askInfo && (

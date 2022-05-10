@@ -5,22 +5,12 @@ export const pathNameState = atom({
   default: "/",
 });
 
-// export const newsListState = atom({
-//   key: "newsListState",
-//   default: [],
-// });
+export const askIDState = atom({
+  key: "askIDState",
+  default: 0,
+});
 
-// export const askListState = atom({
-//   key: "askListState",
-//   default: [],
-// });
-
-// export const jobsListState = atom({
-//   key: "jobsListState",
-//   default: [],
-// });
-
-// export const itemListState = atom({
-//   key: "itemListState",
-//   default: [],
-// });
+export const userIDState = atom({
+  key: "userIDState",
+  default: 0,
+});
