@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AskView from "./pages/AskView";
 import NewsView from "./pages/NewsView";
