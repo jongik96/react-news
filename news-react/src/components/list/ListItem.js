@@ -1,28 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { fetchAsk, fetchJobs, fetchNews } from "../../api";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { pathNameState } from "../../state/atoms";
+import { getItemList } from "../../state/selector";
 
 export function ListItem() {
   const { pathname } = useLocation();
-  const [ItemList, setItemList] = useState([]);
-
-  const fetchList = async () => {
-    if (pathname === "/news" || pathname === "/") {
-      const newsList = await fetchNews();
-      setItemList(newsList.data);
-    } else if (pathname === "/ask") {
-      const askList = await fetchAsk();
-      setItemList(askList.data);
-    } else if (pathname === "/jobs") {
-      const jobsList = await fetchJobs();
-      setItemList(jobsList.data);
-    }
-  };
-
+  const [pathName, setPathName] = useRecoilState(pathNameState);
+  const ItemList = useRecoilValue(getItemList);
   useEffect(() => {
-    fetchList();
-  }, []);
-
+    setPathName(pathname);
+  });
   return (
     <>
       <ul style={{ padding: "0", margin: "0" }}>

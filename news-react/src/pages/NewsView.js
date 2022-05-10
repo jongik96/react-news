@@ -1,12 +1,12 @@
 import React from "react";
-import NewsList from "../components/list/NewsList.js";
-// import { ListItem } from "../components/list/ListItem";
+// import NewsList from "../components/list/NewsList.js";
+import { ListItem } from "../components/list/ListItem";
 function NewsView() {
   return (
     <>
       <div>NewsView</div>
-      <NewsList />
-      {/* <ListItem /> */}
+      {/* <NewsList /> */}
+      <ListItem />
     </>
   );
 }
