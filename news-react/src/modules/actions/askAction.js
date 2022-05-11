@@ -17,3 +17,24 @@ export const getAskListFail = (error) => {
     error,
   };
 };
+
+export const getAskInfo = (id) => {
+  return {
+    type: "GET_ASKINFO",
+    meta: id,
+  };
+};
+
+export const getAskInfoFail = (error) => {
+  return {
+    type: "GET_ASKINFO_FAIL",
+    error,
+  };
+};
+
+export const getAskInfoSuccess = (askInfo) => {
+  return {
+    type: "GET_ASKINFO_SUCCESS",
+    askInfo: askInfo,
+  };
+};

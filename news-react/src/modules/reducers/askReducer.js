@@ -9,4 +9,15 @@ const askList = (state = [], action) => {
   }
 };
 
-export default askList;
+const askInfo = (state = "", action) => {
+  switch (action.type) {
+    case "GET_ASKINFO_SUCCESS":
+      return { ...state, ...action.askInfo };
+    case "GET_ASKINFO_FAIL":
+      return [...state, action.error];
+    default:
+      return state;
+  }
+};
+
+export { askList, askInfo };

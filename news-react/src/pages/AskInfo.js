@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchItem } from "../api";
+import allAction from "../modules/actions";
 
 function AskInfo() {
   const params = useParams().id;
-  const [askInfo, setAskInfo] = useState();
-  const fetchAskInfo = async () => {
-    const response = await fetchItem(params);
-    setAskInfo(response.data);
-  };
+  console.log(params);
+  const dispatch = useDispatch();
+  const askInfo = useSelector((state) => state.askInfo);
+  console.log(askInfo);
   useEffect(() => {
-    fetchAskInfo();
+    dispatch(allAction.getAskInfo(params));
   }, []);
   return (
     <>
@@ -28,20 +28,21 @@ function AskInfo() {
           </section>
           <section>
             <h3>Comments {askInfo.comments_count}</h3>
-            {askInfo.comments.map((item) => (
-              <li
-                style={{
-                  listStyle: "none",
-                  border: "ridge",
-                  padding: "0.5rem",
-                }}
-                key={item.id}
-              >
-                <div>{item.user}</div>
-                <div dangerouslySetInnerHTML={{ __html: item.content }}></div>
-                <div>{item.time_ago}</div>
-              </li>
-            ))}
+            {askInfo.comments &&
+              askInfo.comments.map((item) => (
+                <li
+                  style={{
+                    listStyle: "none",
+                    border: "ridge",
+                    padding: "0.5rem",
+                  }}
+                  key={item.id}
+                >
+                  <div>{item.user}</div>
+                  <div dangerouslySetInnerHTML={{ __html: item.content }}></div>
+                  <div>{item.time_ago}</div>
+                </li>
+              ))}
           </section>
         </div>
       )}

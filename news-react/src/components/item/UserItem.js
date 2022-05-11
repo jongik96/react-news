@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchUser } from "../../api/index";
+import allAction from "../../modules/actions";
 
 function UserItem() {
   const params = useParams().id;
-  const [userInfo, setUserInfo] = useState();
-
-  const fetchUserInfo = async () => {
-    const response = await fetchUser(params);
-    setUserInfo(response.data);
-  };
-
+  console.log(params);
+  const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.userInfo);
+  console.log(userInfo);
   useEffect(() => {
-    fetchUserInfo();
+    dispatch(allAction.getUserInfo(params));
   }, []);
   return (
     <>

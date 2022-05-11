@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import allAction from "../../modules/actions/index.js";
 
 function AskList() {
@@ -35,10 +36,20 @@ function AskList() {
             </div>
             <div>
               <p>
-                {askItem.title}
-                <span>
-                  {askItem.domain} {askItem.user}
-                </span>
+                <Link
+                  style={{ color: "black", textDecoration: "none" }}
+                  to={{ pathname: `/askInfo/${askItem.id}` }}
+                >
+                  {askItem.title}
+                </Link>
+                <small>
+                  {" "}
+                  by{" "}
+                  <Link to={{ pathname: `/userInfo/${askItem.user}` }}>
+                    {askItem.user}
+                  </Link>
+                </small>
+                {askItem.time_ago && <small>{askItem.time_ago}</small>}
               </p>
             </div>
           </li>
