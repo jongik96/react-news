@@ -11,7 +11,7 @@ function NewsList() {
   return (
     <ul style={{ padding: "0", margin: "0" }}>
       {newsList &&
-        newsList.map((newsItem) => (
+        newsList.map((newsItem, index) => (
           <li
             style={{
               listStyle: "none",
@@ -19,7 +19,8 @@ function NewsList() {
               alignItems: "center",
               borderBottom: "1px solid #eee",
             }}
-            key={newsItem.id}
+            // key={newsItem.id}
+            key={index}
           >
             <div
               style={{

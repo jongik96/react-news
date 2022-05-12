@@ -12,7 +12,7 @@ function AskList() {
   return (
     <ul style={{ padding: "0", margin: "0" }}>
       {askList &&
-        askList.map((askItem) => (
+        askList.map((askItem, index) => (
           <li
             style={{
               listStyle: "none",
@@ -20,7 +20,8 @@ function AskList() {
               alignItems: "center",
               borderBottom: "1px solid #eee",
             }}
-            key={askItem.id}
+            // key={askItem.id}
+            key={index}
           >
             <div
               style={{

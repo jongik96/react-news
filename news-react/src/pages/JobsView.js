@@ -1,7 +1,7 @@
 import React from "react";
 import JobsList from "../components/list/JobsList";
 // import { ListItem } from "../components/list/ListItem";
-function AskView() {
+function JobsView() {
   return (
     <>
       <div>JobsView</div>
@@ -11,4 +11,4 @@ function AskView() {
   );
 }
 
-export default AskView;
+export default JobsView;

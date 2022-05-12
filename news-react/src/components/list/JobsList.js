@@ -11,7 +11,7 @@ function JobsList() {
   return (
     <ul style={{ padding: "0", margin: "0" }}>
       {jobsList &&
-        jobsList.map((jobsItem) => (
+        jobsList.map((jobsItem, index) => (
           <li
             style={{
               listStyle: "none",
@@ -19,7 +19,8 @@ function JobsList() {
               alignItems: "center",
               borderBottom: "1px solid #eee",
             }}
-            key={jobsItem.id}
+            // key={jobsItem.id}
+            key={index}
           >
             <div
               style={{
